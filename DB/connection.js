@@ -1,4 +1,9 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import dotenv from 'dotenv';
+
+// const mongoose = require("mongoose");
+dotenv.config();
+
 const DB = process.env.URL;
 
 if (!DB) {
