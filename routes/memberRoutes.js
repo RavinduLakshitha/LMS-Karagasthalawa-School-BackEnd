@@ -1,26 +1,40 @@
 const express = require("express");
 const router = express.Router();
-const Member = require("../models/Member");
+const Member = require("../models/Member"); // Import the Member model
 
-// Add a Member
-router.post("/", async (req, res) => {
+// Endpoint to add a new member
+router.post("/add", async (req, res) => {
     try {
-        const newMember = new Member(req.body);
-        const savedMember = await newMember.save();
-        res.status(201).json({ message: "Member added successfully!", member: savedMember });
+        const { cardNumber, name, grade, indexNumber, phoneNumber, address } = req.body;
+        const newMember = new Member({
+            cardNumber,
+            name,
+            grade,
+            indexNumber,
+            phoneNumber,
+            address,
+        });
+
+        await newMember.save();
+        res.status(201).json({ message: "Member added successfully", member: newMember });
     } catch (error) {
-        res.status(500).json({ error: "Failed to add member." });
+        console.error("Error adding member:", error);
+        res.status(500).json({ error: "Failed to add member" });
     }
 });
 
-// Get All Members
+// Endpoint to get all members
 router.get("/", async (req, res) => {
+  
     try {
-        const members = await Member.find();
-        res.status(200).json(members);
-    } catch (error) {
-        res.status(500).json({ error: "Failed to fetch members." });
+    const members = await Member.find();
+       res.status(200).json(members);
+   } catch (error) {
+        console.error("Error fetching members:", error);
+        res.status(500).json({ error: "Failed to fetch members" });
     }
+
 });
+
 
 module.exports = router;
