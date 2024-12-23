@@ -11,12 +11,12 @@ if (!DB) {
     process.exit(1);
 }
 
-console.log(`Connection ${DB}`);
+console.log(`Connecting to MongoDB...`);
 
 
 mongoose.connect(DB)
     .then(() => {
-        console.log("Connection successful!");
+        console.log("DB connected!");
     })
     .catch((error) => {
         console.error("Error connecting to MongoDB:", error); 
