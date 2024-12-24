@@ -5,8 +5,8 @@ exports.submitBook = async(req, res) =>{
 
  const{
     
-    bookID,bookName,bookclassificationNum,author,publisher,publicationDate,totalPages,price,donationMedium,removeDate,other } =req.body;
-    const newBook = new Book({bookID,bookName,bookclassificationNum,author,publisher,publicationDate,totalPages,price,donationMedium,removeDate,other });
+    bookID, bookName, bookclassificationNum, author, entryDate, category, publisher, publicationDate, totalPages, price, donationMedium, removeDate, other } =req.body;
+    const newBook = new Book({ bookID, bookName, bookclassificationNum, author,entryDate, category, publisher, publicationDate, totalPages, price, donationMedium, removeDate, other  });
 
     try{
         const savedBook = await newBook.save();
