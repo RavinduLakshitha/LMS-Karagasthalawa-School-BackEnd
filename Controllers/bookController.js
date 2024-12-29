@@ -1,4 +1,4 @@
-const Book= require('../models/Books');
+const Book= require('../Models/Books');
 
 exports.submitBook = async(req, res) =>{
     console.log("Request body:", req.body);
@@ -18,3 +18,12 @@ exports.submitBook = async(req, res) =>{
         res.status(500).send('Error submitting book.');
       }
 };
+
+exports.displayBook = async(req, res) =>{
+    try{
+        const books = await Book.find();
+        res.json(books);
+    }catch(err){
+        res.status(500).json({message:err.message});
+    }
+}
