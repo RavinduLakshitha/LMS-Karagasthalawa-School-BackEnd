@@ -48,11 +48,11 @@ const bookSchema =new mongoose.Schema(
     },
     removeDate:{
         type: String,
-        required: true
+        required: false
     },
     other:{
         type: String,
-        required: true
+        required: false
     }
     },
     { timestamps: true }// This option enables automatic management of createdAt and updatedAt fields
