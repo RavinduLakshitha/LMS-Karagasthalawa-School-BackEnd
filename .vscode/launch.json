@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "msedge",
+            "name": "http://localhost:5000/update-book/676ff9b08c912d69cc74592e",
+            "request": "launch",
+            "url": "http://localhost:5000/update-book/676ff9b08c912d69cc74592e"
+        }
+    ]
+}
