@@ -19,7 +19,7 @@ app.use(cors());
 
 // Define Routes
 app.use("/api/members", require("./routes/memberRoutes"));
-app.get('/api/members/add', (req, res) => { res.json({ message: 'Add member page' }); });
+
 
 
 // Start Server
