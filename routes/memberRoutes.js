@@ -1,8 +1,16 @@
-const express = require("express");
-const router = express.Router();
-const Member = require("../models/Member"); // Import the Member model
+//Defines the endpoints of our API
 
-// Endpoint to add a new member
+//Imports the Express library for building web APIs.
+//it provides GET, POST, PUT, DELETE requests
+const express = require("express");
+
+//Creates a new router object for defining API endpoints.
+const router = express.Router();
+
+//Imports the Member model to interact with the Member collection
+const Member = require("../models/Member"); 
+
+// Endpoint to add a new member to the database
 router.post("/add", async (req, res) => {
     try {
         const { cardNumber, name, grade, indexNumber, phoneNumber, address } = req.body;
@@ -24,6 +32,8 @@ router.post("/add", async (req, res) => {
 });
 
 // Endpoint to get a single member by ID
+//Finds a member by its unique MongoDB _id.
+//Fetches specific member details for viewing or editing.
 router.get("/:id", async (req, res) => {
     try {
         const member = await Member.findById(req.params.id);
@@ -36,6 +46,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Endpoint to get all members
+//Displays a list of all members.
 router.get("/", async (req, res) => {
     try {
       const members = await Member.find(); // Fetch all members from the database
