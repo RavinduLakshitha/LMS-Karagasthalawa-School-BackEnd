@@ -35,6 +35,17 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// Endpoint to get all members
+router.get("/", async (req, res) => {
+    try {
+      const members = await Member.find(); // Fetch all members from the database
+      res.status(200).json(members);
+    } catch (error) {
+      console.error("Error fetching members:", error);
+      res.status(500).json({ error: "Failed to fetch members" });
+    }
+  });
+
 // Endpoint to update a member by ID
 router.put("/:id", async (req, res) => {
     try {
