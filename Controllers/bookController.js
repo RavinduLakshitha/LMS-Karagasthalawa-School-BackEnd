@@ -30,6 +30,17 @@ exports.displayBook = async(req, res) =>{
     }
 }
 
+// return book
+
+exports.returndisplayBook = async(req, res) =>{
+    try{
+        const books = await Book.find();
+        res.json(books);
+    }catch(err){
+        res.status(500).json({message:err.message});
+    }
+}
+
 {/*exports.updateBook =async(req,res) =>{
     const{id } =req.params;
     const{ bookID, bookName, bookclassificationNum, author,entryDate, category, publisher, publicationDate, totalPages, price, donationMedium, removeDate, other}
