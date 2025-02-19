@@ -125,3 +125,23 @@ exports.deleteBookById = async (req, res) => {
         res.status(500).json({ message: "Failed to delete the book", error: error.message });
     }
 };
+
+exports.getBookCount = async (req, res) => {
+    try {
+      // Fetch all issued books and group them by bookName
+      const issuedBooks = await IssueBook.aggregate([
+        {
+          $group: { _id: "$bookName", count: { $sum: 1 } } // Group by bookName and count occurrences
+        },
+        {
+          $project: { bookName: "$_id", count: 1, _id: 0 } // Format response
+        }
+      ]);
+  
+      // Send the result as response
+      res.status(200).json(issuedBooks);
+    } catch (error) {
+      console.error("Error fetching book count:", error);
+      res.status(500).json({ message: "Error fetching book count", error });
+    }
+  };
