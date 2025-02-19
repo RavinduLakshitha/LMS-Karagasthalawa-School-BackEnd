@@ -20,6 +20,8 @@ const issueBookRoute = require('./routes/issueBookRoutes');
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use("/api/books", bookRoute); // Ensure this line exists for book routes
+
 
 // Define Routes
 const memberRoutes = require("./routes/memberRoutes");
