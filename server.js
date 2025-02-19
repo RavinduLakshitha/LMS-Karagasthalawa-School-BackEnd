@@ -1,17 +1,19 @@
-require("dotenv").config(); // Load environment variables
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+import dotenv from "dotenv"; // Load environment variables
+dotenv.config();
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
 
 // Database Connection
-require("./DB/connection");
+import "./DB/connection";
 
 // Initialize App
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 //import routes
-const bookRoute = require('./routes/bookRoute');
+import bookRoute from './routes/bookRoute';
+import issueBookRoute from './routes/issueBookRoutes';
 
 // Middleware
 
@@ -19,10 +21,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-
 // Define Routes
-app.use("/api/members", require("./routes/memberRoutes"));
+import memberRoutes from "./routes/memberRoutes";
+app.use("/api/members", memberRoutes);
 app.use("/api",bookRoute);
+app.use("/api/issue-book", issueBookRoute);
 
 // Start Server
 app.listen(PORT, () => {
