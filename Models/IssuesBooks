@@ -1,0 +1,35 @@
+import mongoose from 'mongoose';
+
+const issueBookSchema = new mongoose.Schema(
+  {
+    bookID: {
+      type: String,
+      required: true,
+    },
+    bookName: {
+      type: String,
+      required: true,
+    },
+    memberID: {
+      type: String,
+      required: true,
+    },
+    memberName: {
+      type: String,
+      required: true,
+    },
+    issueDate: {
+      type: Date,
+      required: true,
+    },
+    returnDate: {
+      type: Date,
+      required: true,
+    },
+  },
+  { timestamps: true } // Automatically manage createdAt and updatedAt
+);
+
+const IssueBook = mongoose.model("IssueBook", issueBookSchema);
+
+export default IssueBook;
