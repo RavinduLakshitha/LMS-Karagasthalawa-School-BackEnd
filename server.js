@@ -1,19 +1,19 @@
-import dotenv from "dotenv"; // Load environment variables
+const dotenv = require("dotenv");
 dotenv.config();
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // Database Connection
-import "./DB/connection";
+require('./DB/connection.js');
 
 // Initialize App
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 //import routes
-import bookRoute from './routes/bookRoute';
-import issueBookRoute from './routes/issueBookRoutes';
+const bookRoute = require('./routes/bookRoute');
+const issueBookRoute = require('./routes/issueBookRoutes');
 
 // Middleware
 
@@ -22,7 +22,7 @@ app.use(cors());
 
 
 // Define Routes
-import memberRoutes from "./routes/memberRoutes";
+const memberRoutes = require("./routes/memberRoutes");
 app.use("/api/members", memberRoutes);
 app.use("/api",bookRoute);
 app.use("/api/issue-book", issueBookRoute);
