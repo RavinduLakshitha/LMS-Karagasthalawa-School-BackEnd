@@ -19,6 +19,7 @@ exports.submitBook = async (req, res) => {
     removeDate,
     other,
   } = req.body;
+  
   const newBook = new Book({
     bookID,
     bookName,
