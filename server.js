@@ -26,7 +26,6 @@ app.use("/api/books", bookRoute); // Ensure this line exists for book routes
 // Define Routes
 const memberRoutes = require("./routes/memberRoutes");
 app.use("/api/members", memberRoutes);
-app.use("/api",bookRoute);
 app.use("/api/issue-book", issueBookRoute);
 
 // Start Server
